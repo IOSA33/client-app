@@ -1,0 +1,31 @@
+{
+  "name": "my-app",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "dependencies": {
+    "@expo/metro-runtime": "~57.0.17",
+    "expo": "~57.0.30",
+    "expo-status-bar": "~57.0.1",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "react-native": "0.86.3",
+    "react-native-web": "^0.21.2"
+  },
+  "devDependencies": {
+    "@react-native/typescript-config": "^0.88.0",
+    "@types/jest": "^30.0.0",
+    "@types/react": "~19.2.2",
+    "@types/react-test-renderer": "^19.3.0",
+    "eslint": "^9.0.0",
+    "eslint-config-expo": "~57.0.2",
+    "typescript": "~6.0.3"
+  },
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "lint": "expo lint"
+  },
+  "private": true
+}
