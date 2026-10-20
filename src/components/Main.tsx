@@ -1,7 +1,8 @@
+import { ReactElement } from "react";
 import { Text, View } from "react-native";
 import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
 
-const Main = () => {
+const Main = (): ReactElement => {
     return (
         <View>
             {/* TODO: here is coming navigation bar */}

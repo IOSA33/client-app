@@ -3,8 +3,9 @@ import { StatusBar } from 'expo-status-bar';
 import { NativeRouter } from 'react-router-native';
 
 import Main from './src/components/Main';
+import { ReactElement } from 'react';
 
-export default function App() {
+const App = (): ReactElement => {
   return (
     <View>
       <StatusBar style="auto" />
@@ -12,5 +13,7 @@ export default function App() {
         <Main />
       </NativeRouter>
     </View>
-  );
-}
+  )
+};
+
+export default App;
