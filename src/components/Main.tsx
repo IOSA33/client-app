@@ -8,11 +8,11 @@ const Main = (): ReactElement => {
             {/* TODO: here is coming navigation bar */}
 
 
-            {/* TODO: pages, for now only four
-                    main page with general info
-                    account info
-                    register and login
-                    and settings fro theme change
+            {/* TODO: pages, for now only:
+                    2. main page with general info
+                    3. account info
+                    4. register and login
+                    5. and settings fro theme change
             */}
             <SafeAreaProvider>
                 <SafeAreaView>
