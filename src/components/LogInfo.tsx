@@ -6,7 +6,7 @@ import { Idata } from "../interfaces";
 import theme from "../theme";
 
 
-const LogInfo = () : ReactElement => {
+const LogInfo = (): ReactElement => {
 
     const data: Idata = sampleData; 
 
