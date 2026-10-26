@@ -1,14 +1,27 @@
 import { ReactElement } from "react";
-import { View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { Route, Routes, Navigate } from 'react-router-native';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import MainPage from "./MainPage";
 import AppBar from "./AppBar";
 
-const Main = (): ReactElement => {
-    return (
-        <View>
-        <AppBar />
 
+const styles = StyleSheet.create({
+    container: {
+        flex: 1
+    },
+    content: {
+        flex: 1
+    }
+})
+
+const Main = (): ReactElement => {
+    const insets = useSafeAreaInsets();
+
+    return (
+        <View style={styles.container}>
+        <View style={styles.content}>
+            <SafeAreaView>
             <Routes>
             {/* TODO: pages, for now only:
                     2. main page with general info
@@ -23,8 +36,13 @@ const Main = (): ReactElement => {
                 <Route path="/" element={<MainPage />}/>
                 <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
+            </SafeAreaView>
+        </View>
+
+        <View style={{ paddingBottom: insets.bottom }}>
+            <AppBar />
+        </View>
         </View>
     )
 };
-
 export default Main;

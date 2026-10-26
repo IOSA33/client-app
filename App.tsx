@@ -5,11 +5,10 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import Main from './src/components/Main';
 
-// Deleted SafeAreaView because we have in AppBar.tsx constant "Constants.statusBarHeight"
 const App = (): ReactElement => {
   return (
   <SafeAreaProvider>      
-      <StatusBar style="light" />
+      <StatusBar style="auto" />
 
       <NativeRouter>
         <Main />
