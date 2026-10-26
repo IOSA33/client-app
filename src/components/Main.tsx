@@ -4,6 +4,9 @@ import { Route, Routes, Navigate } from 'react-router-native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import MainPage from "./MainPage";
 import AppBar from "./AppBar";
+import LogInfo from "./LogInfo";
+import Profile from "./Profile";
+import SignIn from "./SignIn";
 
 
 const styles = StyleSheet.create({
@@ -11,7 +14,8 @@ const styles = StyleSheet.create({
         flex: 1
     },
     content: {
-        flex: 1
+        flex: 1,
+        margin: 15
     }
 })
 
@@ -35,6 +39,9 @@ const Main = (): ReactElement => {
             */}
                 <Route path="/" element={<MainPage />}/>
                 <Route path="*" element={<Navigate to="/" replace />} />
+                <Route path="/loginfo" element={<LogInfo />} />
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/signin" element={<SignIn />} />
             </Routes>
             </SafeAreaView>
         </View>

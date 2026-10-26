@@ -6,6 +6,7 @@ const theme = {
     textSecondary: '#586069',
     primary: '#0366d6',
     AppBarBackground: "#53bf5c",
+    MainBackground: "#53bf5c",
     appBarText: "#ffffff"
   },
   fontSizes: {
@@ -24,6 +25,9 @@ const theme = {
     normal: '400',
     bold: '700',
   },
+  borders: {
+    borderRadius: 8
+  }
 };
 
 export default theme;

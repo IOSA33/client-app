@@ -16,9 +16,8 @@ const AppBar = (): ReactElement => {
         <View style={styles.container}>
             <ScrollView horizontal>
                 <AppBarTab LinkTo="/"> Home </AppBarTab>
-                <AppBarTab LinkTo="/"> LogInfo </AppBarTab>
-                <AppBarTab LinkTo="/"> Profile </AppBarTab>
-
+                <AppBarTab LinkTo="/loginfo"> LogInfo </AppBarTab>
+                <AppBarTab LinkTo="/profile"> Profile </AppBarTab>
             </ScrollView>
         </View>
     );

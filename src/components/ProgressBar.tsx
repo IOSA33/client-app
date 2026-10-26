@@ -3,6 +3,7 @@ import { StyleSheet, View } from "react-native";
 import Text from "./Text";
 import { Idata } from "../interfaces";
 import sampleData from "../sampleData/data";
+import theme from "../theme";
 
 const ProgressBar = (): ReactElement => {
     const data: Idata = sampleData;
@@ -32,14 +33,13 @@ const Square = ({ done }: { done: boolean }): ReactElement => {
     return <View style={[styles.square, styles.squareGrey]} />
 };
 
-
 const styles = StyleSheet.create({
     square: {
         width: 20,
         height: 20,
-        margin: 5,
+        margin: 4,
         borderWidth: 1.2,
-        borderRadius: 6
+        borderRadius: theme.borders.borderRadius
     },
     squareGrey: {
         backgroundColor: 'lightgrey',

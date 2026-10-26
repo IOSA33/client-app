@@ -9,5 +9,9 @@ export enum Week {
 };
 
 export interface Idata {
-    weekData: Week[]
+    weekData: Week[],
+    username?: string,
+    bbmiMetric: number,
+    height: number,
+    currentWeight: number,
 };
