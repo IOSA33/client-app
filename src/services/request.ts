@@ -1,9 +1,15 @@
 import axios, { type AxiosResponse, isAxiosError } from 'axios';
 import { Idata } from '../interfaces';
 
-const baseURL = "/api/";
+const apiUrl: unknown = process.env.EXPO_PUBLIC_API_URL;
 
-const getAll = async (): Promise<Idata[]> => {
+if (typeof apiUrl !== "string" || apiUrl === "") {
+  throw new Error("EXPO_PUBLIC_API_URL is not set");
+}
+
+const baseURL = `${apiUrl}/api/userdata`;
+
+const getUserData = async (): Promise<Idata[]> => {
     try {
         const { data }: AxiosResponse<Idata[]> = await axios.get<Idata[]>(baseURL);
         return data;
@@ -17,5 +23,5 @@ const getAll = async (): Promise<Idata[]> => {
 }
 
 export default {
-    getAll
+    getUserData
 }
