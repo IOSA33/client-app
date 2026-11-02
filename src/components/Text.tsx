@@ -15,6 +15,9 @@ const styles = StyleSheet.create({
   colorPrimary: {
     color: theme.colors.primary,
   },
+  white: {
+    color: theme.colors.appBarText,
+  },
   fontSizeSubheading: {
     fontSize: theme.fontSizes.subheading,
   },
@@ -24,7 +27,7 @@ const styles = StyleSheet.create({
 });
 
 interface IProps extends TextProps {
-  color?: 'textSecondary' | 'primary';
+  color?: 'textSecondary' | 'primary' | "white";
   fontSize?: 'subheading';
   fontWeight?: 'bold';
 };
@@ -34,6 +37,7 @@ const Text = ({ color, fontSize, fontWeight, style, ...props }: IProps): ReactEl
     styles.text,
     color === 'textSecondary' && styles.colorTextSecondary,
     color === 'primary' && styles.colorPrimary,
+    color === 'white' && styles.white,
     fontSize === 'subheading' && styles.fontSizeSubheading,
     fontWeight === 'bold' && styles.fontWeightBold,
     style,

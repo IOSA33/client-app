@@ -6,8 +6,8 @@ import { Link } from "react-router-native";
 
 const AddButton = (): ReactElement => {
     return (
-        <Link to="/addactivity" style={styles.addButton}>
-            <Text>Add activity</Text>
+        <Link to="/addactivity" style={styles.addButton}  underlayColor="purple">
+            <Text color="white">Add activity</Text>
         </Link>
     )
 }
@@ -19,7 +19,8 @@ const styles = StyleSheet.create({
         alignItems: "center",
         borderWidth: 1,
         padding: 30,
-        borderRadius: theme.borders.borderRadius
+        borderRadius: theme.borders.borderRadius,
+        backgroundColor: theme.colors.AppBarBackground
     },
 })
 

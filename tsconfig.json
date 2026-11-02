@@ -8,5 +8,6 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "allowImportingTsExtensions": true
-  }
+  },
+  "include": ["**/*.ts", "**/*.tsx", "declarations.d.ts"]
 }

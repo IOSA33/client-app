@@ -19,7 +19,9 @@ const MainPage = (): ReactElement => {
             <ProgressBar />
 
             {/* Some animation */}
-            <Character />
+            <View style={styles.image}>
+                <Character />
+            </View>
 
             {/* Add button */}
             <View style={styles.addButton}>
@@ -47,9 +49,13 @@ const styles = StyleSheet.create({
     },
     addButton: {
         marginTop: "auto",
-        marginBottom: 10,
         alignItems: "stretch",
     },
+    image: {
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+    }
 })
 
 export default MainPage;
