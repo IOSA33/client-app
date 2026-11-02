@@ -21,8 +21,8 @@ const MainPage = (): ReactElement => {
             {/* Some animation */}
             <Character />
 
+            {/* Add button */}
             <View style={styles.addButton}>
-                {/* Add button */}
                 <AddButton />
             </View>
         </View>
@@ -47,8 +47,8 @@ const styles = StyleSheet.create({
     },
     addButton: {
         marginTop: "auto",
-        marginBottom: 20,
-        alignItems: "center"
+        marginBottom: 10,
+        alignItems: "stretch",
     },
 })
 
