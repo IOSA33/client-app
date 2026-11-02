@@ -18,27 +18,30 @@ const styles = StyleSheet.create({
     },
     content: {
         flex: 1,
-        margin: 15
+        margin: 15,
+    },
+    safeArea: {
+        flex: 1,
     }
 })
 
 const Main = (): ReactElement => {
-    const result = useQuery({
-        queryKey: ["userData"],
-        queryFn: requestUserService.getUserData
-    })
+    // const result = useQuery({
+    //     queryKey: ["userData"],
+    //     queryFn: requestUserService.getUserData
+    // })
     const insets = useSafeAreaInsets();
 
-    console.log(JSON.parse(JSON.stringify(result)))
+    // console.log(JSON.parse(JSON.stringify(result)))
  
-    if (result.isPending) {
-        return <Text>loading...</Text>
-    }
+    // if (result.isPending) {
+    //     return <Text>loading...</Text>
+    // }
 
     return (
         <View style={styles.container}>
         <View style={styles.content}>
-            <SafeAreaView>
+            <SafeAreaView style={styles.safeArea} edges={["top"]}>
             <Routes>
             {/* TODO: pages, for now only:
                     2. main page with general info
@@ -50,7 +53,7 @@ const Main = (): ReactElement => {
             {/*TODO: Main Page should render info about users days info
                 also his basic info...
             */}
-                <Route path="/" element={<MainPage />}/>
+                <Route path="/" element={<MainPage />} />
                 <Route path="*" element={<Navigate to="/" replace />} />
                 <Route path="/loginfo" element={<LogInfo />} />
                 <Route path="/profile" element={<Profile />} />
