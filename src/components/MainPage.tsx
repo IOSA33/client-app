@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 import { StyleSheet, View } from "react-native";
-import Text from "./Text";
+// import Text from "./Text";
 import ProgressBar from "./ProgressBar";
 import Character from "./Character";
 import AddButton from "./AddButton";
@@ -8,9 +8,9 @@ import AddButton from "./AddButton";
 const MainPage = (): ReactElement => {
     return (
         <View style={styles.container}>
-            <View style={styles.topBar}>
+            {/* <View style={styles.topBar}>
                 <Text fontWeight="bold">Progress</Text>
-            </View>
+            </View> */}
 
             {/* a line*/}
             <Line />

@@ -2,14 +2,14 @@ import { ReactElement } from "react";
 import { StyleSheet, View } from "react-native";
 import { Route, Routes, Navigate } from 'react-router-native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
-import { useQuery } from '@tanstack/react-query'
+// import { useQuery } from '@tanstack/react-query'
 import MainPage from "./MainPage";
 import AppBar from "./AppBar";
 import LogInfo from "./LogInfo";
 import Profile from "./Profile";
 import SignIn from "./SignIn";
 import Text from "./Text";
-import requestUserService from "../services/request"
+// import requestUserService from "../services/request"
 import AddActivity from "./AddActivity";
 
 
@@ -43,6 +43,9 @@ const Main = (): ReactElement => {
         <View style={styles.container}>
         <View style={styles.content}>
             <SafeAreaView style={styles.safeArea} edges={["top"]}>
+
+            <Text fontSize="subheading" fontWeight="bold">Gym Db.</Text>
+            
             <Routes>
             {/* TODO: pages, for now only:
                     2. main page with general info

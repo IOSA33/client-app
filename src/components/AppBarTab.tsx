@@ -8,7 +8,7 @@ import Text from "./Text";
 const styles = StyleSheet.create({
   tab: {
     paddingHorizontal: 15,
-    paddingVertical: 15,
+    paddingVertical: 22,
   },
   text: {
     color: theme.colors.appBarText,

@@ -18,6 +18,8 @@ const AppBar = (): ReactElement => {
                 <AppBarTab LinkTo="/"> Home </AppBarTab>
                 <AppBarTab LinkTo="/loginfo"> LogInfo </AppBarTab>
                 <AppBarTab LinkTo="/profile"> Profile </AppBarTab>
+                <AppBarTab LinkTo="/profile"> TodoDay </AppBarTab>
+                <AppBarTab LinkTo="/profile"> LastTrainMap </AppBarTab>
             </ScrollView>
         </View>
     );

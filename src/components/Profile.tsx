@@ -16,9 +16,16 @@ const Profile = (): ReactElement => {
             <Text style={styles.title}>Profile</Text>
             <Text fontSize="subheading">username: {userData.username}</Text>
 
-            <Pressable style={styles.signInButton} onPress={() => { navigate("/signin") }}>
-                <Text style={{color: "white"}}>REGISTER OR SIGNIN</Text>
-            </Pressable>
+            {/* Here is going the whole activity by years*/}
+            <Text>Look Activity</Text>
+
+            {/* Beta version: Optional id user wants to sync with server */}
+            <View>
+                <Text fontWeight="bold" fontSize="subheading" > Want to save the logs? </Text>
+                <Pressable style={styles.signInButton} onPress={() => { navigate("/signin") }}>
+                    <Text style={{color: "white"}}>REGISTER OR SIGNIN</Text>
+                </Pressable>
+            </View>
         </View>
     )
 }

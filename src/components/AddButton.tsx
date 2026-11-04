@@ -15,7 +15,7 @@ const AddButton = (): ReactElement => {
 const styles = StyleSheet.create({
     addButton: {
         marginTop: "auto",
-        marginBottom: 20,
+        marginBottom: 10,
         alignItems: "center",
         borderWidth: 1,
         padding: 30,
