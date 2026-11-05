@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 import { Pressable, StyleSheet, View } from "react-native";
 import sampleData from '../sampleData/data';
-import Text from "./Text";
+import Text from "./Tools/Text";
 import { Idata } from "../interfaces";
 import { useNavigate } from "react-router-native";
 import theme from "../theme";

@@ -2,8 +2,8 @@ import { GestureResponderEvent, Pressable, StyleSheet, TextStyle } from "react-n
 import { Link } from "react-router-native";
 import { PropsWithChildren, ReactElement } from 'react';
 
-import theme from "../theme";
-import Text from "./Text";
+import theme from "../../theme";
+import Text from "../Tools/Text";
 
 const styles = StyleSheet.create({
   tab: {

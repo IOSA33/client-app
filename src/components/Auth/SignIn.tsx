@@ -1,5 +1,5 @@
 import { ReactElement, useState } from "react";
-import Text from "../Text";
+import Text from "../Tools/Text";
 import { Pressable, StyleSheet, TextInput, View } from "react-native";
 import { Link } from "react-router-native";
 import { useForm, Controller, type SubmitHandler } from "react-hook-form";
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
         padding: 15,
     },
     pressedButton: {
-        backgroundColor: "yellow",
+        backgroundColor: "#ffe863",
     },
     unPressedButton: {
         backgroundColor: "orange",

@@ -1,9 +1,9 @@
 import { ReactElement } from "react";
 import { StyleSheet, View } from "react-native";
-import Text from "./Text";
-import { Idata } from "../interfaces";
-import sampleData from "../sampleData/data";
-import theme from "../theme";
+import Text from "../Tools/Text";
+import { Idata } from "../../interfaces";
+import sampleData from "../../sampleData/data";
+import theme from "../../theme";
 
 const ProgressBar = (): ReactElement => {
     const data: Idata = sampleData;

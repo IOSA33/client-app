@@ -1,5 +1,5 @@
 import { Text as NativeText, StyleSheet, TextProps, TextStyle } from 'react-native';
-import theme from '../theme.ts';
+import theme from '../../theme.ts';
 import { ReactElement } from 'react';
 
 const styles = StyleSheet.create({

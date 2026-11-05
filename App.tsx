@@ -7,7 +7,7 @@ import { QueryClient, QueryClientProvider, focusManager } from '@tanstack/react-
 import { AppState, Platform } from 'react-native'
 import type { AppStateStatus } from 'react-native'
 
-import Main from './src/components/Main';
+import Main from './src/components/Main/Main';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -39,7 +39,7 @@ const App = (): ReactElement => {
       <StatusBar style="auto" />
 
     <QueryClientProvider client={queryClient}>
-      <NativeRouter>
+      <NativeRouter future={{v7_startTransition: true,v7_relativeSplatPath: true}}>
         <Main />
       </NativeRouter>
     </QueryClientProvider>

@@ -1,9 +1,9 @@
 import { ReactElement } from "react";
 import { StyleSheet, View } from "react-native";
 // import Text from "./Text";
-import ProgressBar from "./ProgressBar";
-import Character from "./Character";
-import AddButton from "./AddButton";
+import ProgressBar from "../Activity/ProgressActivity";
+import Character from "../Character";
+import AddButton from "../AddButton";
 
 const MainPage = (): ReactElement => {
     return (

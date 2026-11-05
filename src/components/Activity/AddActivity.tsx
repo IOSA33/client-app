@@ -2,10 +2,10 @@ import { ReactElement } from "react";
 import { View, TextInput, Pressable, StyleSheet } from "react-native";
 import { useForm, Controller, type SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Activity } from "../schema/validationSchemas";
+import { Activity } from "../../schema/validationSchemas";
 
-import Text from "./Text";
-import theme from "../theme";
+import Text from "../Tools/Text";
+import theme from "../../theme";
 
 type FormValues = {
   activity: string

@@ -4,15 +4,15 @@ import { Route, Routes, Navigate } from 'react-router-native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 // import { useQuery } from '@tanstack/react-query'
 import MainPage from "./MainPage";
-import AppBar from "./AppBar";
-import LogInfo from "./LogInfo";
-import Profile from "./Profile";
-import SignIn from "./Auth/SignIn";
-import Text from "./Text";
+import AppBar from "../AppBar/AppBar";
+import LogInfo from "../LogInfo";
+import Profile from "../Profile";
+import SignIn from "../Auth/SignIn";
+import Text from "../Tools/Text";
 // import requestUserService from "../services/request"
-import AddActivity from "./AddActivity";
-import SignUp from "./Auth/SignUp";
-import ForgotPassword from "./Auth/ForgotPassword";
+import AddActivity from "../Activity/AddActivity";
+import SignUp from "../Auth/SignUp";
+import ForgotPassword from "../Auth/ForgotPassword";
 
 
 const styles = StyleSheet.create({
@@ -67,6 +67,9 @@ const Main = (): ReactElement => {
                 <Route path="/signup" element={<SignUp />} />
                 <Route path="/reset" element={<ForgotPassword />} />
                 <Route path="/addactivity" element={<AddActivity />} />
+                {/* TODO: FEEDBACK page */}
+                {/* <Route path="/feedback" element={<Feedback />} /> */}
+
             </Routes>
             </SafeAreaView>
         </View>

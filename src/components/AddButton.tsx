@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 import { StyleSheet } from "react-native";
 import theme from "../theme";
-import Text from "./Text";
+import Text from "./Tools/Text";
 import { Link } from "react-router-native";
 
 const AddButton = (): ReactElement => {

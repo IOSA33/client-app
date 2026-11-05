@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
-import Text from "./Text";
+import Text from "./Tools/Text";
 import sampleData from "../sampleData/data";
 import { Idata } from "../interfaces";
 import theme from "../theme";
