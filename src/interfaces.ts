@@ -15,3 +15,14 @@ export interface Idata {
     height: number,
     currentWeight: number,
 };
+
+export interface IAuth {
+    username: string,
+    email?: string,
+    password: string
+}
+
+export interface IAuthResponse {
+    username: string,
+    token: string
+}
