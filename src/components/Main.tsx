@@ -7,10 +7,11 @@ import MainPage from "./MainPage";
 import AppBar from "./AppBar";
 import LogInfo from "./LogInfo";
 import Profile from "./Profile";
-import SignIn from "./SignIn";
+import SignIn from "./Auth/SignIn";
 import Text from "./Text";
 // import requestUserService from "../services/request"
 import AddActivity from "./AddActivity";
+import SignUp from "./Auth/SignUp";
 
 
 const styles = StyleSheet.create({
@@ -62,6 +63,7 @@ const Main = (): ReactElement => {
                 <Route path="/loginfo" element={<LogInfo />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/signin" element={<SignIn />} />
+                <Route path="/signup" element={<SignUp />} />
                 <Route path="/addactivity" element={<AddActivity />} />
             </Routes>
             </SafeAreaView>

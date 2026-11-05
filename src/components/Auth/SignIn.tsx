@@ -1,0 +1,119 @@
+import { ReactElement, useState } from "react";
+import Text from "../Text";
+import { Pressable, StyleSheet, TextInput, View } from "react-native";
+import { Link } from "react-router-native";
+import { useForm, Controller, type SubmitHandler } from "react-hook-form";
+import theme from "../../theme";
+
+type FormValues = {
+    username: string,
+    password: string
+}
+
+const SignIn = (): ReactElement => {
+    const { control, handleSubmit, formState: { errors }} = useForm<FormValues>({
+        defaultValues: { 
+            username: "",
+            password: ""
+         }
+    });
+    // TODO: setPassword visible
+    const [isHidden] = useState(true);
+    const [loginButtonPressed, setLoginButtonPressed] = useState(false);
+
+    const onSubmit: SubmitHandler<FormValues> = (data) => {
+        console.log(data);
+    }
+
+    return (
+        <View style={styles.container}>
+            <Text fontWeight="bold" fontSize="subheading">Log in to your account</Text>
+
+            <Controller 
+                control={control}
+                name="username"
+                rules={{ required: true }}
+                render={({ field: { onChange, onBlur, value } }) => (
+                <TextInput
+                    style={styles.input}
+                    placeholder="username"
+                    onBlur={onBlur}
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                    onChangeText={onChange}
+                    value={value} 
+                />
+                )}
+            />
+            {errors.username && <Text style={styles.error}>Username is required</Text>}
+            
+            <Controller 
+                control={control}
+                name="password"
+                rules={{ required: true }}
+                render={({ field: { onChange, onBlur, value } }) => (
+                <TextInput
+                    style={styles.input}
+                    placeholder="password"
+                    onBlur={onBlur}
+                    onChangeText={onChange}
+                    value={value}
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                    secureTextEntry={isHidden}
+                    textContentType="password" // IOS
+                    autoComplete="password"
+                />
+                )}
+            />
+            {errors.password && <Text style={styles.error}>Password is required</Text>}
+            
+            <Pressable
+                style={[styles.button, loginButtonPressed && styles.pressedButton, !loginButtonPressed && styles.unPressedButton]} 
+                onPress={() => {void handleSubmit(onSubmit)();}}
+                onPressIn={() => {setLoginButtonPressed(true)}}
+                onPressOut={() => {setLoginButtonPressed(false)}}
+                >
+                
+                <Text color="white" fontWeight="bold">Login</Text>
+            </Pressable>
+
+            <Link to={"/signup"} underlayColor="white"><Text style={styles.signup}>Create a new account</Text></Link>
+        </View>
+    )
+}
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: "center"      
+    },
+    error: {
+        color: "red"
+    },
+    input: {
+        borderColor: "gray",
+        borderWidth: 1,
+        borderRadius: theme.borders.borderRadius,
+        padding: 15,
+        marginTop: 8,
+    },
+    pressedButton: {
+        backgroundColor: "yellow",
+    },
+    unPressedButton: {
+        backgroundColor: "orange",
+    },
+    button: {
+        padding: 15,
+        borderRadius: theme.borders.borderRadius,
+        alignItems: "center",
+        marginTop: 12,
+        marginBottom: 5
+    },
+    signup: {
+        color: "blue"
+    }
+});
+
+export default SignIn;
