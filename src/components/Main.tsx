@@ -12,6 +12,7 @@ import Text from "./Text";
 // import requestUserService from "../services/request"
 import AddActivity from "./AddActivity";
 import SignUp from "./Auth/SignUp";
+import ForgotPassword from "./Auth/ForgotPassword";
 
 
 const styles = StyleSheet.create({
@@ -64,6 +65,7 @@ const Main = (): ReactElement => {
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/signin" element={<SignIn />} />
                 <Route path="/signup" element={<SignUp />} />
+                <Route path="/reset" element={<ForgotPassword />} />
                 <Route path="/addactivity" element={<AddActivity />} />
             </Routes>
             </SafeAreaView>

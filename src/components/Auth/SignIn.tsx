@@ -17,8 +17,7 @@ const SignIn = (): ReactElement => {
             password: ""
          }
     });
-    // TODO: setPassword visible
-    const [isHidden] = useState(true);
+    const [isHidden, setIsHidden] = useState(true);
     const [loginButtonPressed, setLoginButtonPressed] = useState(false);
 
     const onSubmit: SubmitHandler<FormValues> = (data) => {
@@ -27,7 +26,7 @@ const SignIn = (): ReactElement => {
 
     return (
         <View style={styles.container}>
-            <Text fontWeight="bold" fontSize="subheading">Log in to your account</Text>
+            <Text fontWeight="bold" fontSize="subheading" style={styles.subheadingText}>Log in to your account</Text>
 
             <Controller 
                 control={control}
@@ -52,18 +51,21 @@ const SignIn = (): ReactElement => {
                 name="password"
                 rules={{ required: true }}
                 render={({ field: { onChange, onBlur, value } }) => (
-                <TextInput
-                    style={styles.input}
-                    placeholder="password"
-                    onBlur={onBlur}
-                    onChangeText={onChange}
-                    value={value}
-                    autoCapitalize="none"
-                    autoCorrect={false}
-                    secureTextEntry={isHidden}
-                    textContentType="password" // IOS
-                    autoComplete="password"
-                />
+                <View style={[styles.passwordContainer]}>
+                    <TextInput
+                        placeholder="password"
+                        onBlur={onBlur}
+                        onChangeText={onChange}
+                        value={value}
+                        autoCapitalize="none"
+                        autoCorrect={false}
+                        secureTextEntry={isHidden}
+                        textContentType="password" // IOS
+                        autoComplete="password"
+                        style={styles.passwordInput}
+                    />
+                    <Text style={styles.showPassword} onPress={() => {setIsHidden(!isHidden)}}>{isHidden ? "Show": "Hide"}</Text>
+                </View>
                 )}
             />
             {errors.password && <Text style={styles.error}>Password is required</Text>}
@@ -77,8 +79,9 @@ const SignIn = (): ReactElement => {
                 
                 <Text color="white" fontWeight="bold">Login</Text>
             </Pressable>
-
-            <Link to={"/signup"} underlayColor="white"><Text style={styles.signup}>Create a new account</Text></Link>
+            
+            <Link to={"/signup"} underlayColor="white" style={styles.linkContainer}><Text style={styles.linkText}>Create a new account</Text></Link>
+            <Link to={"/reset"} underlayColor="white" style={styles.linkContainer}><Text style={styles.linkText}>Forgot Password?</Text></Link>
         </View>
     )
 }
@@ -87,6 +90,9 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: "center"      
+    },
+    subheadingText: {
+        marginBottom: 7
     },
     error: {
         color: "red"
@@ -97,6 +103,11 @@ const styles = StyleSheet.create({
         borderRadius: theme.borders.borderRadius,
         padding: 15,
         marginTop: 8,
+    },
+    passwordInput: {
+        borderRadius: theme.borders.borderRadius,
+        flex: 1,
+        padding: 15,
     },
     pressedButton: {
         backgroundColor: "yellow",
@@ -111,8 +122,23 @@ const styles = StyleSheet.create({
         marginTop: 12,
         marginBottom: 5
     },
-    signup: {
-        color: "blue"
+    linkText: {
+        color: "blue",
+    },
+    linkContainer: {
+        alignSelf: 'flex-start',
+        marginBottom: 4
+    },
+    passwordContainer: {
+        flexDirection: "row",
+        alignItems: "center",
+        borderColor: "gray",
+        borderWidth: 1,
+        borderRadius: theme.borders.borderRadius,
+        marginTop: 8,
+    },
+    showPassword: {
+        paddingHorizontal: 15,
     }
 });
 
