@@ -1,55 +1,57 @@
-
-// HERE we are going to handle the register and login logic 
-// Should return auth token?
-
-import { useMutation, useQueryClient } from "@tanstack/react-query"
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import authService from "../services/authService"
 import { IAuth } from "../interfaces";
+import {    saveToken } from "../services/token";
+import { useNavigate } from "react-router-native";
 
-// type: login - register - reset
-type authrequest = "login" | "register" | "reset"
-
-interface ReturnResponse {
-    login: 
-}
-// FIX: return type
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-export const useAuth = (type: authrequest) => {
+export const useAuth = () => {
+    const navigate = useNavigate();
     const queryClient = useQueryClient();
+
+    const result = useQuery({
+        queryKey: ['me'],
+        queryFn: authService.getMe,
+        retry: false
+    })
 
     const loginMutation = useMutation({
         mutationFn: authService.loginUser,
-        onSuccess: (data) => {
-
+        onSuccess: async (data) => {
+            await saveToken(data.token);
+            console.log(data.token)
+            await queryClient.invalidateQueries({ queryKey: ["me"] });
+            navigate("/profile");
         },
         onError: (error) => {
-
+            console.log("Login failed:", error.message);
         },
     })
 
-    const registerMutation = useMutation({
-        mutationFn: authService.loginUser,
-        onSuccess: (data) => {
+    // const registerMutation = useMutation({
+    //     mutationFn: authService.loginUser,
+    //     onSuccess: (data) => {
 
-        },
-        onError: (error) => {
+    //     },
+    //     onError: (error) => {
 
-        },
-    })
+    //     },
+    // })
 
-    const resetMutation = useMutation({
-        mutationFn: () => {},
-        onSuccess: (data) => {
+    // const resetMutation = useMutation({
+    //     mutationFn: () => {},
+    //     onSuccess: (data) => {
 
-        },
-        onError: (error) => {
+    //     },
+    //     onError: (error) => {
 
-        },
-    })
+    //     },
+    // })
 
     return {
-        login: (userObject: IAuth): void => {loginMutation.mutate(userObject)},
-        register: (userObject: IAuth): void => {registerMutation.mutate(userObject)},
-        reset: (email: string): void => {resetMutation.mutate()}
+        login: (userObject: IAuth): void => { loginMutation.mutate(userObject) },
+        result: result
+        // register: (userObject: IAuth): void => { registerMutation.mutate(userObject) },
+        //reset: (email: string): void => {resetMutation.mutate()}
     }
 }
