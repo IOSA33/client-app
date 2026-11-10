@@ -36,7 +36,6 @@ const Main = (): ReactElement => {
             <SafeAreaView style={styles.safeArea} edges={["top"]}>
 
             <Text fontSize="subheading" fontWeight="bold">Gym Db.</Text>
-            <Pressable style={{ flex: 1 }} onPress={() => {Keyboard.dismiss()}} accessible={false}>
 
             <SQLiteProvider databaseName="test.db" onInit={migrateDb}>
                 <Routes>
@@ -55,9 +54,20 @@ const Main = (): ReactElement => {
                     <Route path="/loginfo" element={<LogInfo />} />
                     <Route path="/profile" element={<Profile />} />
  
-                    <Route path="/signin" element={<SignIn />} />
-                    <Route path="/signup" element={<SignUp />} />
-                    <Route path="/reset" element={<ForgotPassword />} />
+                    <Route path="/signin" element={
+                        <Pressable style={{ flex: 1 }} onPress={() => {Keyboard.dismiss()}} accessible={false}>
+                            <SignIn />
+                        </Pressable>} />
+                    <Route path="/signup" element={
+                        <Pressable style={{ flex: 1 }} onPress={() => {Keyboard.dismiss()}} accessible={false}>
+                            <SignUp />
+                        </Pressable>
+                        } />
+                    <Route path="/reset" element={
+                        <Pressable style={{ flex: 1 }} onPress={() => {Keyboard.dismiss()}} accessible={false}>
+                            <ForgotPassword />
+                        </Pressable>
+                        } />
                     
                     <Route path="/addactivity" element={<AddActivity />} />
                     <Route path="/settings" element={<AddProfileSettings />} />
@@ -67,7 +77,6 @@ const Main = (): ReactElement => {
                 </Routes>
             </SQLiteProvider>
 
-            </Pressable>
             </SafeAreaView>
         </View>
 

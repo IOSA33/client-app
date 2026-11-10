@@ -76,6 +76,11 @@ const Profile = (): ReactElement => {
                 <Text>10101010101001010101010011</Text>
                 <Text>10101010101001010101010011</Text>
 
+                <Pressable style={styles.syncButton}>
+                    <Text color="white">
+                        Sync your data
+                    </Text>
+                </Pressable>
             </View>
             
             {/* Logout */}
@@ -133,6 +138,16 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         padding: 10,
         marginLeft: "auto"
+    },
+    syncButton: {
+        borderWidth: 1,
+        backgroundColor: "#f39e69",
+        borderRadius: theme.borders.borderRadius,
+        alignItems: "center",
+        justifyContent: "center",
+        padding: 10,
+        alignSelf: 'flex-start',
+        marginTop: 20
     },
     header: {
         alignItems: "center",
