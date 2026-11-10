@@ -45,14 +45,22 @@ const Profile = (): ReactElement => {
                 </View>
             }
 
+            {result.data && 
+                <View style={[styles.buttonBoxNotMargin, { marginTop: 10 }]}>
+                    <Text fontSize="subheading">Welcome back: <Text fontWeight="bold" fontSize="subheading">{result.data.username}</Text></Text>
+                </View>
+            }
+
             <View>
-                <Text style={styles.title}>Profile</Text>
-                {result.data && <Text fontSize="subheading">username: {result.data.username}</Text>}
+                <View style={styles.header}>
+                    <Text style={styles.title}>Profile</Text>
+                    <Link to="/settings" style={styles.settingsButton} underlayColor="#ff8080"><Text color="white">Settings</Text></Link>
+                </View>
 
                 <Text fontWeight="bold">Basic Informatin</Text>
                 <Text>Height: {info[0]?.height} cm</Text>
                 <Text>Weight: {info[0]?.weight} kg</Text>
-                <Text>BMI: {info[0]?.weight} kg</Text>
+                <Text>BMI: {info[0]?.weight}</Text>
 
                 <Text fontWeight="bold">Look Activity</Text>
                 <Text>10101010101001010101010011</Text>
@@ -60,20 +68,19 @@ const Profile = (): ReactElement => {
                 <Text>10101010101001010101010011</Text>
                 <Text>10101010101001010101010011</Text>
 
-                <Link to="/settings" style={styles.settingsButton} underlayColor="#ff8080"><Text color="white">Settings</Text></Link>
             </View>
             
             {/* Logout */}
             {result.data &&
                 <View style={styles.buttonBox}>
-                    <Text fontWeight="bold" fontSize="subheading" style={{marginBottom: 10}} >Want to logout?</Text>
+                    <Text fontWeight="bold" fontSize="subheading" style={{marginBottom: 10}} >Want to Logout?</Text>
 
                     <Pressable style={styles.signInButton} onPress={ async () => { 
                     await clearToken();
                     queryClient.removeQueries({ queryKey: ["me"] });
                     navigate("/profile");
                     }}>
-                    <Text style={{color: "white"}}>Logout</Text>
+                    <Text color="white">Logout</Text>
                     </Pressable>
                 </View>
             }
@@ -111,12 +118,16 @@ const styles = StyleSheet.create({
     },
     settingsButton: {
         borderWidth: 1,
-        backgroundColor: "#f25757",
+        backgroundColor: "#a7d19d",
         borderRadius: theme.borders.borderRadius,
         alignItems: "center",
         justifyContent: "center",
-        padding: 20,
-        alignSelf: 'flex-start',
+        padding: 10,
+        marginLeft: "auto"
+    },
+    header: {
+        alignItems: "center",
+        flexDirection: "row",
     }
 });
 

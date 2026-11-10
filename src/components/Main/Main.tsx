@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { StyleSheet, View } from "react-native";
+import { Keyboard, Pressable, StyleSheet, View } from "react-native";
 import { Route, Routes, Navigate } from 'react-router-native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 // import { useQuery } from '@tanstack/react-query'
@@ -36,6 +36,7 @@ const Main = (): ReactElement => {
             <SafeAreaView style={styles.safeArea} edges={["top"]}>
 
             <Text fontSize="subheading" fontWeight="bold">Gym Db.</Text>
+            <Pressable style={{ flex: 1 }} onPress={() => {Keyboard.dismiss()}} accessible={false}>
 
             <SQLiteProvider databaseName="test.db" onInit={migrateDb}>
                 <Routes>
@@ -53,9 +54,11 @@ const Main = (): ReactElement => {
                     <Route path="*" element={<Navigate to="/" replace />} />
                     <Route path="/loginfo" element={<LogInfo />} />
                     <Route path="/profile" element={<Profile />} />
+ 
                     <Route path="/signin" element={<SignIn />} />
                     <Route path="/signup" element={<SignUp />} />
                     <Route path="/reset" element={<ForgotPassword />} />
+                    
                     <Route path="/addactivity" element={<AddActivity />} />
                     <Route path="/settings" element={<AddProfileSettings />} />
                     {/* TODO: FEEDBACK page */}
@@ -64,6 +67,7 @@ const Main = (): ReactElement => {
                 </Routes>
             </SQLiteProvider>
 
+            </Pressable>
             </SafeAreaView>
         </View>
 
