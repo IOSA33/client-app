@@ -1,4 +1,4 @@
-import { ReactElement, useEffect, useState } from "react";
+import { ReactElement, useEffect, useMemo, useState } from "react";
 import { Pressable, StyleSheet, View } from "react-native";
 import Text from "./Tools/Text";
 import { Link, useNavigate } from "react-router-native";
@@ -16,7 +16,6 @@ const Profile = (): ReactElement => {
     const queryClient = useQueryClient();
     const [info, setInfo] = useState<Idata[]>([]);
     const [refresh, setRefresh] = useState(false);
-    const [bmi, setBmi] = useState(0);
 
     useEffect(() => {
         const getData = async (): Promise<void> => {
@@ -27,18 +26,18 @@ const Profile = (): ReactElement => {
                 console.error(e);
             }
         };
-        const calculateBmi = (): void => {
-            if (info[0]?.height && info[0].weight) {
-                const num: number = info[0].weight / ((info[0].height / 100) * (info[0].height / 100));
-                const roundedNum: number = Number(num.toFixed(2));
-                setBmi(roundedNum);
-            }
-        }
 
         void getData();
-        calculateBmi();
-    }, [getAllData, refresh, info])
+    }, [getAllData, refresh])
 
+    const calculateBmi = useMemo((): number => {
+        const { height, weight } = info[0] ?? {};
+        if (!height || !weight) return 0;
+        const num: number = weight / ((height / 100) * (height / 100));
+        const roundedNum: number = Number(num.toFixed(2));
+        return roundedNum;
+    }, [info])
+    
     if (result.isPending) return <View><Text>loading...</Text></View>
 
     return (
@@ -69,7 +68,7 @@ const Profile = (): ReactElement => {
                 <Text fontWeight="bold">Basic Informatin</Text>
                 <Text>Height: {info[0]?.height} cm</Text>
                 <Text>Weight: {info[0]?.weight} kg</Text>
-                <Text>BMI: {bmi>0 ? bmi : "Enter height and weight"}</Text>
+                <Text>BMI: {calculateBmi}</Text>
 
                 <Text fontWeight="bold">Look Activity</Text>
                 <Text>10101010101001010101010011</Text>
@@ -96,6 +95,7 @@ const Profile = (): ReactElement => {
         </View>
     )
 }
+
 
 const styles = StyleSheet.create({
     title: {
