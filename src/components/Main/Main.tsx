@@ -15,6 +15,7 @@ import Text from "../Tools/Text";
 import AddActivity from "../Activity/AddActivity";
 import SignUp from "../Auth/SignUp";
 import ForgotPassword from "../Auth/ForgotPassword";
+import AddProfileSettings from "../Activity/AddProfileSettings";
 
 const Main = (): ReactElement => {
     // const result = useQuery({
@@ -56,6 +57,7 @@ const Main = (): ReactElement => {
                     <Route path="/signup" element={<SignUp />} />
                     <Route path="/reset" element={<ForgotPassword />} />
                     <Route path="/addactivity" element={<AddActivity />} />
+                    <Route path="/settings" element={<AddProfileSettings />} />
                     {/* TODO: FEEDBACK page */}
                     {/* <Route path="/feedback" element={<Feedback />} /> */}
 
