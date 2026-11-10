@@ -26,8 +26,8 @@ const loginUser = async (userObject: IAuth): Promise<IAuthResponse> => {
 
 const getMe = async (): Promise<IAuthResponse> => {
     const token: string | null = await getToken();
-    console.log(token)
     if (!token) throw new Error("services/getMe: Token is missing.");
+    console.log(token)
     try {
         const { data }: AxiosResponse<IAuthResponse> = await axios.get<IAuthResponse>(`${baseURL}/me`, {
             headers: token ? { Authorization: `Bearer ${token}` } : undefined,

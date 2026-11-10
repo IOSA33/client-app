@@ -23,22 +23,22 @@ const LogInfo = (): ReactElement => {
                     <Text>{data.height}</Text>
                 </View>
                 <View style={styles.boxInfo}>
-                    <Text>{data.currentWeight}</Text>
+                    <Text>{data.weight}</Text>
                 </View>
                 <View style={styles.boxInfo}>
-                    <Text>{data.currentWeight}</Text>
+                    <Text>{data.weight}</Text>
                 </View>
                 <View style={styles.boxInfo}>
-                    <Text>{data.currentWeight}</Text>
+                    <Text>{data.weight}</Text>
                 </View>
                 <View style={styles.boxInfo}>
-                    <Text>{data.currentWeight}</Text>
+                    <Text>{data.weight}</Text>
                 </View>
                 <View style={styles.boxInfo}>
-                    <Text>{data.currentWeight} long text data</Text>
+                    <Text>{data.weight} long text data</Text>
                 </View>
                 <View style={styles.boxInfo}>
-                    <Text>{data.currentWeight}</Text>
+                    <Text>{data.weight}</Text>
                 </View>
             </ScrollView>
         </View>
