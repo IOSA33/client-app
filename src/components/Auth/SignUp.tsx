@@ -4,6 +4,8 @@ import { Pressable, StyleSheet, TextInput, View } from "react-native";
 import { Link } from "react-router-native";
 import { useForm, Controller, type SubmitHandler } from "react-hook-form";
 import theme from "../../theme";
+import { IAuthRegister } from "../../interfaces";
+import { useAuth } from "../../hooks/useAuth";
 
 type FormValues = {
     username: string,
@@ -13,6 +15,8 @@ type FormValues = {
 }
 
 const SignUp = (): ReactElement => {
+    const { register } = useAuth();
+
     const { control, handleSubmit, formState: { errors }} = useForm<FormValues>({
         defaultValues: { 
             username: "",
@@ -25,7 +29,13 @@ const SignUp = (): ReactElement => {
     const [loginButtonPressed, setLoginButtonPressed] = useState(false);
 
     const onSubmit: SubmitHandler<FormValues> = (data) => {
-        console.log(data);
+        const object: IAuthRegister = {
+            username: data.username,
+            password: data.password,
+            email: data.email
+        };
+
+        register(object);
     }
 
     return (
@@ -127,7 +137,7 @@ const SignUp = (): ReactElement => {
                 onPressOut={() => {setLoginButtonPressed(false)}}
                 >
                 
-                <Text color="white" fontWeight="bold">Login</Text>
+                <Text color="white" fontWeight="bold">Register</Text>
             </Pressable>
             <Link to={"/signin"} underlayColor="white" style={styles.linkContainer}><Text style={styles.linkText}>Login to your account</Text></Link>
         </View>

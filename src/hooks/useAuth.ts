@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import authService from "../services/authService"
-import { IAuth } from "../interfaces";
+import { IAuth, IAuthRegister } from "../interfaces";
 import {    saveToken } from "../services/token";
 import { useNavigate } from "react-router-native";
 
@@ -28,15 +28,15 @@ export const useAuth = () => {
         },
     })
 
-    // const registerMutation = useMutation({
-    //     mutationFn: authService.loginUser,
-    //     onSuccess: (data) => {
-
-    //     },
-    //     onError: (error) => {
-
-    //     },
-    // })
+    const registerMutation = useMutation({
+        mutationFn: authService.registerUser,
+        onSuccess: () => {
+            navigate("/signin");
+        },
+        onError: (error) => {
+            console.log("Registration failed:", error.message);
+        },
+    })
 
     // const resetMutation = useMutation({
     //     mutationFn: () => {},
@@ -50,8 +50,8 @@ export const useAuth = () => {
 
     return {
         login: (userObject: IAuth): void => { loginMutation.mutate(userObject) },
-        result: result
-        // register: (userObject: IAuth): void => { registerMutation.mutate(userObject) },
+        result: result,
+        register: (userObject: IAuthRegister): void => { registerMutation.mutate(userObject) },
         //reset: (email: string): void => {resetMutation.mutate()}
     }
 }

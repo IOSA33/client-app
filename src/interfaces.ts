@@ -23,6 +23,13 @@ export interface IAuth {
     password: string
 }
 
+export interface IAuthRegister {
+    username: string,
+    email: string,
+    password: string
+}
+
+
 export interface IAuthResponse {
     username: string,
     token: string

@@ -76,11 +76,11 @@ const Profile = (): ReactElement => {
                 <Text>10101010101001010101010011</Text>
                 <Text>10101010101001010101010011</Text>
 
-                <Pressable style={styles.syncButton}>
+                {result.data && <Pressable style={styles.syncButton}>
                     <Text color="white">
                         Sync your data
                     </Text>
-                </Pressable>
+                </Pressable>}
             </View>
             
             {/* Logout */}
