@@ -4,6 +4,8 @@ import { Pressable, StyleSheet, TextInput, View } from "react-native";
 import { Link } from "react-router-native";
 import { useForm, Controller, type SubmitHandler } from "react-hook-form";
 import theme from "../../theme";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { IAuthResetZod } from "../../schema/validationSchemas";
 
 type FormValues = {
     email: string,
@@ -13,7 +15,8 @@ const ForgotPassword = (): ReactElement => {
     const { control, handleSubmit, formState: { errors }} = useForm<FormValues>({
         defaultValues: { 
             email: ""
-         }
+        },
+        resolver: zodResolver(IAuthResetZod)
     });
     const [loginButtonPressed, setLoginButtonPressed] = useState(false);
 
@@ -43,7 +46,7 @@ const ForgotPassword = (): ReactElement => {
                 />
                 )}
             />
-            {errors.email && <Text style={styles.error}>Email is required</Text>}
+            {errors.email && <Text style={styles.error}>{errors.email.message}</Text>}
            
             <Pressable
                 style={[styles.button, loginButtonPressed && styles.pressedButton, !loginButtonPressed && styles.unPressedButton]} 

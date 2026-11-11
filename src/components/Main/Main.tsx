@@ -1,9 +1,11 @@
 import { ReactElement } from "react";
-import { Keyboard, Pressable, StyleSheet, View } from "react-native";
+import { Keyboard, Platform, Pressable, StyleSheet, View } from "react-native";
 import { Route, Routes, Navigate } from 'react-router-native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 // import { useQuery } from '@tanstack/react-query'
 import { SQLiteProvider, type SQLiteDatabase } from 'expo-sqlite';
+import Animated, { FadeIn } from "react-native-reanimated";
+
 
 import MainPage from "./MainPage";
 import AppBar from "../AppBar/AppBar";
@@ -52,19 +54,25 @@ const Main = (): ReactElement => {
                     <Route path="/" element={<MainPage />} />
                     <Route path="*" element={<Navigate to="/" replace />} />
                     <Route path="/loginfo" element={<LogInfo />} />
-                    <Route path="/profile" element={<Profile />} />
+                    
+                    <Route path="/profile" element={
+                        <Animated.View entering={FadeIn.duration(130)} style={{flex: 1}}>
+                            <Profile />
+                        </Animated.View>
+                    } />
  
                     <Route path="/signin" element={
-                        <Pressable style={{ flex: 1 }} onPress={() => {Keyboard.dismiss()}} accessible={false}>
+                        <Pressable style={{ flex: 1 }} onPress={() => {if (Platform.OS !== 'web') Keyboard.dismiss();}} accessible={false}>
                             <SignIn />
                         </Pressable>} />
+
                     <Route path="/signup" element={
-                        <Pressable style={{ flex: 1 }} onPress={() => {Keyboard.dismiss()}} accessible={false}>
+                        <Pressable style={{ flex: 1 }} onPress={() => {if (Platform.OS !== 'web') Keyboard.dismiss();}} accessible={false}>
                             <SignUp />
                         </Pressable>
                         } />
                     <Route path="/reset" element={
-                        <Pressable style={{ flex: 1 }} onPress={() => {Keyboard.dismiss()}} accessible={false}>
+                        <Pressable style={{ flex: 1 }} onPress={() => {if (Platform.OS !== 'web') Keyboard.dismiss();}} accessible={false}>
                             <ForgotPassword />
                         </Pressable>
                         } />

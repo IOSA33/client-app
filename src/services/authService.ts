@@ -1,6 +1,6 @@
 import axios, { type AxiosResponse, isAxiosError } from 'axios';
 import { IAuth, IAuthRegister, IAuthResponse } from '../interfaces';
-import { getToken } from './token';
+import { clearToken, getToken } from './token';
 
 const apiUrl: unknown = process.env.EXPO_PUBLIC_API_URL;
 
@@ -49,6 +49,11 @@ const getMe = async (): Promise<IAuthResponse> => {
     } catch (e) {
         console.log(e)
         if (isAxiosError(e)) {
+            if (e.response?.status === 401) {
+                await clearToken();
+                console.log("Authorize for access.");
+                throw new Error("Authorize for access.");
+            }
             console.log(e.response?.status, e.message);
         }
         throw new Error("services/getMe: Cant getme.");

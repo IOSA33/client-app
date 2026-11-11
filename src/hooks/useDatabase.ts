@@ -14,9 +14,13 @@ const useDatabase = () => {
             ON CONFLICT(id) DO UPDATE SET height = excluded.height`, height);
         console.log("Inserted RowID: ", result.lastInsertRowId, ", Inserted changes: ", result.changes);
     }
+
     const addDataWeight = async (weight: number): Promise<void> => {
         if (weight <= 0) throw new Error("Weight cant be negative.");
-        const result = await db.runAsync('UPDATE userStats SET weight = ?', weight);
+        
+        const result = await db.runAsync(`
+            INSERT INTO userStats (id, weight) VALUES (1, ?)
+            ON CONFLICT(id) DO UPDATE SET weight = excluded.weight`, weight);
         console.log("Inserted RowID: ", result.lastInsertRowId, ", Inserted changes: ", result.changes);
     }
 

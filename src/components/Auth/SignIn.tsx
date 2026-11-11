@@ -1,11 +1,14 @@
 import { ReactElement, useState } from "react";
-import Text from "../Tools/Text";
 import { Pressable, StyleSheet, TextInput, View } from "react-native";
 import { Link } from "react-router-native";
 import { useForm, Controller, type SubmitHandler } from "react-hook-form";
-import theme from "../../theme";
-import { useAuth } from "../../hooks/useAuth";
+import { zodResolver } from "@hookform/resolvers/zod";
+
 import { IAuth } from "../../interfaces";
+import { IAuthZod } from "../../schema/validationSchemas";
+import { useAuth } from "../../hooks/useAuth";
+import theme from "../../theme";
+import Text from "../Tools/Text";
 
 type FormValues = {
     username: string,
@@ -19,7 +22,8 @@ const SignIn = (): ReactElement => {
         defaultValues: { 
             username: "",
             password: ""
-         }
+        },
+        resolver: zodResolver(IAuthZod)
     });
     const [isHidden, setIsHidden] = useState(true);
     const [loginButtonPressed, setLoginButtonPressed] = useState(false);
@@ -53,7 +57,7 @@ const SignIn = (): ReactElement => {
                 />
                 )}
             />
-            {errors.username && <Text style={styles.error}>Username is required</Text>}
+            {errors.username && <Text style={styles.error}>{errors.username.message}</Text>}
             
             <Controller 
                 control={control}

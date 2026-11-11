@@ -19,7 +19,6 @@ export interface Idata {
 
 export interface IAuth {
     username: string,
-    email?: string,
     password: string
 }
 
@@ -28,7 +27,6 @@ export interface IAuthRegister {
     email: string,
     password: string
 }
-
 
 export interface IAuthResponse {
     username: string,

@@ -1,11 +1,15 @@
 import { ReactElement, useState } from "react";
-import Text from "../Tools/Text";
 import { Pressable, StyleSheet, TextInput, View } from "react-native";
 import { Link } from "react-router-native";
 import { useForm, Controller, type SubmitHandler } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+
 import theme from "../../theme";
-import { IAuthRegister } from "../../interfaces";
+import Text from "../Tools/Text";
 import { useAuth } from "../../hooks/useAuth";
+import { IAuthRegisterZod } from "../../schema/validationSchemas";
+import { IAuthRegister } from "../../interfaces";
+
 
 type FormValues = {
     username: string,
@@ -23,7 +27,8 @@ const SignUp = (): ReactElement => {
             email: "",
             password: "",
             passwordAgain: ""
-         }
+        },
+        resolver: zodResolver(IAuthRegisterZod),
     });
     const [isHidden, setIsHidden] = useState(true);
     const [loginButtonPressed, setLoginButtonPressed] = useState(false);
@@ -59,7 +64,7 @@ const SignUp = (): ReactElement => {
                 />
                 )}
             />
-            {errors.username && <Text style={styles.error}>Username is required</Text>}
+            {errors.username && <Text style={styles.error}>{errors.username.message}</Text>}
             
             {/* email */}
             <Controller 
@@ -69,7 +74,7 @@ const SignUp = (): ReactElement => {
                 render={({ field: { onChange, onBlur, value } }) => (
                 <TextInput
                     style={styles.input}
-                    placeholder="email@email.com"
+                    placeholder="example@example.com"
                     onBlur={onBlur}
                     autoCapitalize="none"
                     autoCorrect={false}
@@ -78,7 +83,7 @@ const SignUp = (): ReactElement => {
                 />
                 )}
             />
-            {errors.email && <Text style={styles.error}>Email is required</Text>}
+            {errors.email && <Text style={styles.error}>{errors.email.message}</Text>}
             
             {/* password */}
             <Controller 
@@ -103,7 +108,7 @@ const SignUp = (): ReactElement => {
                 </View>
                 )}
             />
-            {errors.password && <Text style={styles.error}>Password is required</Text>}
+            {errors.password && <Text style={styles.error}>{errors.password.message}</Text>}
 
             {/* password again */}
             <Controller 
@@ -128,7 +133,7 @@ const SignUp = (): ReactElement => {
                 </View>
                 )}
             />
-            {errors.passwordAgain && <Text style={styles.error}>PasswordAgain is required</Text>}
+            {errors.passwordAgain && <Text style={styles.error}>{errors.passwordAgain.message}</Text>}
             
             <Pressable
                 style={[styles.button, loginButtonPressed && styles.pressedButton, !loginButtonPressed && styles.unPressedButton]} 
