@@ -1,13 +1,15 @@
 import { ReactElement, useEffect, useMemo, useState } from "react";
 import { Pressable, StyleSheet, View } from "react-native";
-import Text from "./Tools/Text";
 import { Link, useNavigate } from "react-router-native";
-import theme from "../theme";
+import { useQueryClient } from "@tanstack/react-query";
+
 import { useAuth } from "../hooks/useAuth";
 import { clearToken } from "../services/token";
-import { useQueryClient } from "@tanstack/react-query";
-import useDatabase from "../hooks/useDatabase";
 import { Idata } from "../interfaces";
+import Text from "./Tools/Text";
+import theme from "../theme";
+import useDatabase from "../hooks/useDatabase";
+
 
 const Profile = (): ReactElement => {
     const navigate = useNavigate()
@@ -69,6 +71,8 @@ const Profile = (): ReactElement => {
                 <Text>Height: {info[0]?.height} cm</Text>
                 <Text>Weight: {info[0]?.weight} kg</Text>
                 <Text>BMI: {calculateBmi}</Text>
+                {/* TODO: water notifications */}
+                <Text>Water per day: 1.5L</Text>
 
                 <Text fontWeight="bold">Look Activity</Text>
                 <Text>10101010101001010101010011</Text>

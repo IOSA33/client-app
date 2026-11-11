@@ -4,7 +4,7 @@ import { Route, Routes, Navigate } from 'react-router-native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 // import { useQuery } from '@tanstack/react-query'
 import { SQLiteProvider, type SQLiteDatabase } from 'expo-sqlite';
-import Animated, { FadeIn } from "react-native-reanimated";
+import Animated, { FadeIn, FadeOutDown } from "react-native-reanimated";
 
 
 import MainPage from "./MainPage";
@@ -17,7 +17,7 @@ import Text from "../Tools/Text";
 import AddActivity from "../Activity/AddActivity";
 import SignUp from "../Auth/SignUp";
 import ForgotPassword from "../Auth/ForgotPassword";
-import AddProfileSettings from "../Activity/AddProfileSettings";
+import ProfileSettings from "../Activity/ProfileSettings";
 
 const Main = (): ReactElement => {
     // const result = useQuery({
@@ -56,7 +56,7 @@ const Main = (): ReactElement => {
                     <Route path="/loginfo" element={<LogInfo />} />
                     
                     <Route path="/profile" element={
-                        <Animated.View entering={FadeIn.duration(130)} style={{flex: 1}}>
+                        <Animated.View key="profile" entering={FadeIn} style={{flex: 1}}>
                             <Profile />
                         </Animated.View>
                     } />
@@ -78,7 +78,13 @@ const Main = (): ReactElement => {
                         } />
                     
                     <Route path="/addactivity" element={<AddActivity />} />
-                    <Route path="/settings" element={<AddProfileSettings />} />
+                    
+                    <Route path="/settings" element={
+                        <Animated.View key="settings" entering={FadeIn} exiting={FadeOutDown.duration(200)} style={{flex: 1}}>    
+                            <ProfileSettings />
+                        </Animated.View>
+                    } />
+                    
                     {/* TODO: FEEDBACK page */}
                     {/* <Route path="/feedback" element={<Feedback />} /> */}
 

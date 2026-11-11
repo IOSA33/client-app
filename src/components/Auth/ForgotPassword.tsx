@@ -1,11 +1,13 @@
 import { ReactElement, useState } from "react";
-import Text from "../Tools/Text";
 import { Pressable, StyleSheet, TextInput, View } from "react-native";
 import { Link } from "react-router-native";
 import { useForm, Controller, type SubmitHandler } from "react-hook-form";
-import theme from "../../theme";
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import { IAuthResetZod } from "../../schema/validationSchemas";
+import Text from "../Tools/Text";
+import theme from "../../theme";
+
 
 type FormValues = {
     email: string,
