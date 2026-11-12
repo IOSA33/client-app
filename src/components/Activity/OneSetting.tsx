@@ -2,7 +2,7 @@ import { ReactElement } from "react";
 import { Pressable, StyleSheet, TextInput, View } from "react-native";
 import Text from "../Tools/Text";
 import { Link, useLocation, useNavigate } from "react-router-native";
-import { Controller, useForm } from "react-hook-form";
+import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import useDatabase from "../../hooks/useDatabase";
 import theme from "../../theme";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -31,16 +31,23 @@ const OneSetting = (): ReactElement => {
     const navigate = useNavigate();
     const location = useLocation();
 
-    // const { db } = useDatabase();
+    const { addDataHeight, addDataWeight } = useDatabase();
 
     const stateFromSettings = location.state as ChangeSetting | null
     if (stateFromSettings === null) {
         return <Text>Change settings from setting page :)</Text>
     }
 
-    const onSubmit = (): void => {
-        navigate("/profile");
-        // stateFromSettings.execute
+    const onSubmit: SubmitHandler<FormOutput> = async (data): Promise<void> => {
+        if (stateFromSettings.execute === "weight") {
+            await addDataWeight(data.newValue);
+            navigate("/profile");
+        } else if(stateFromSettings.execute === "height"){
+            await addDataHeight(data.newValue);
+            navigate("/profile");
+        } else {
+            navigate("/profile");
+        }
     }
 
     return (

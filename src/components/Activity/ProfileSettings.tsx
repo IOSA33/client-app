@@ -28,8 +28,8 @@ const ProfileSettings = (): ReactElement => {
         <View>
             {/* Header */}
             <View style={styles.header}>
-                <Link to="/profile" style={styles.back} underlayColor={"purple"}>
-                    <Text>Back</Text>
+                <Link to="/profile" style={styles.back} underlayColor={"#77e0a5"}>
+                    <Text color="white">Back</Text>
                 </Link>
                 
                 <View>
@@ -40,19 +40,19 @@ const ProfileSettings = (): ReactElement => {
             <Text style={styles.betweenText}>Change basic informain (Click to edit)</Text>
 
             <View style={styles.containerBasicInfo}>
-                <Link to="/onesetting" state={{change: "Weight", currentValue: info[0]?.weight ? info[0].weight : 0, execute: "ww"}} style={styles.boxInfo} underlayColor={"#6b9bed"}>
+                <Link to="/onesetting" state={{change: "Weight", currentValue: info[0]?.weight ? info[0].weight : 0, execute: "weight"}} style={styles.boxInfo} underlayColor={"#6b9bed"}>
                     <View>
                         <Text> Weight </Text>
                         <Text> {info[0]?.weight ? info[0].weight : 0} kg </Text>
                     </View>
                 </Link>
-                <Link to="/onesetting" state={{change: "Height", currentValue: info[0]?.height ? info[0].height : 0, execute: "ww"}} style={styles.boxInfo} underlayColor={"#6b9bed"}>
+                <Link to="/onesetting" state={{change: "Height", currentValue: info[0]?.height ? info[0].height : 0, execute: "height"}} style={styles.boxInfo} underlayColor={"#6b9bed"}>
                     <View>
                         <Text> Height </Text>
                         <Text> {info[0]?.height ? info[0].height : 0} cm </Text>
                     </View>
                 </Link>
-                <Link to="/onesetting"  state={{change: "Water", currentValue: info[0]?.water ? info[0].water : 0, execute: "ww"}} style={styles.boxInfo} underlayColor={"#6b9bed"}>
+                <Link to="/onesetting"  state={{change: "Water", currentValue: info[0]?.water ? info[0].water : 0, execute: "water"}} style={styles.boxInfo} underlayColor={"#6b9bed"}>
                     <View>
                         <Text> Water </Text>
                         <Text> {info[0]?.water ? info[0].water : 0} L </Text>
@@ -87,8 +87,9 @@ const styles = StyleSheet.create({
     back: {
         position: "absolute",
         left: 5,
-        padding: 5,
-        borderRadius: theme.borders.borderRadius
+        padding: 8,
+        borderRadius: theme.borders.borderRadius,
+        backgroundColor: "#9aaed9"
     },
     containerBasicInfo: {
         flexDirection: "row",
