@@ -15,7 +15,7 @@ export const useAuth = () => {
         retry: false
     })
 
-    const loginMutation = useMutation({
+    const { mutate: login, isPending: loginIsPending, isError: loginIsError, error: loginError, reset: loginReset } = useMutation({
         mutationFn: authService.loginUser,
         onSuccess: async (data) => {
             await saveToken(data.token);
@@ -24,7 +24,7 @@ export const useAuth = () => {
             navigate("/profile");
         },
         onError: (error) => {
-            console.log("Login failed:", error.message);
+            console.log(error);
         },
     })
 
@@ -49,7 +49,11 @@ export const useAuth = () => {
     // })
 
     return {
-        login: (userObject: IAuth): void => { loginMutation.mutate(userObject) },
+        login: (userObject: IAuth): void => { login(userObject) },
+        loginIsPending,
+        loginIsError,
+        loginError,
+        loginReset,
         result: result,
         register: (userObject: IAuthRegister): void => { registerMutation.mutate(userObject) },
         //reset: (email: string): void => {resetMutation.mutate()}

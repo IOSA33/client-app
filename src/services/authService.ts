@@ -20,7 +20,7 @@ const loginUser = async (userObject: IAuth): Promise<IAuthResponse> => {
         if (isAxiosError(e)) {
             console.log(e.response?.status, e.message);
         }
-        throw new Error("services/loginUser: loginUser(), Cant login!");
+        throw new Error("Wrong username or password");
     }
 }
 
@@ -32,7 +32,7 @@ const registerUser = async (userObject: IAuthRegister): Promise<void> => {
         if (isAxiosError(e)) {
             console.log(e.response?.status, e.message);
         }
-        throw new Error("services/registerUser: registerUser(), Cant register!");
+        throw new Error("Username or Email must be unique");
     }
 }
 
@@ -56,7 +56,7 @@ const getMe = async (): Promise<IAuthResponse> => {
             }
             console.log(e.response?.status, e.message);
         }
-        throw new Error("services/getMe: Cant getme.");
+        throw new Error("You need to authorize to use account");
     }
 }
 

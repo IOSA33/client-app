@@ -80,7 +80,7 @@ const Main = (): ReactElement => {
                     <Route path="/addactivity" element={<AddActivity />} />
                     
                     <Route path="/settings" element={
-                        <Animated.View key="settings" entering={FadeIn} exiting={FadeOutDown.duration(200)} style={{flex: 1}}>    
+                        <Animated.View key="settings" entering={FadeIn} exiting={FadeOutDown.duration(140)} style={{flex: 1}}>    
                             <ProfileSettings />
                         </Animated.View>
                     } />

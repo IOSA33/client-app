@@ -1,4 +1,4 @@
-import { ReactElement, useState } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import { Pressable, StyleSheet, TextInput, View } from "react-native";
 import { Link } from "react-router-native";
 import { useForm, Controller, type SubmitHandler } from "react-hook-form";
@@ -16,7 +16,7 @@ type FormValues = {
 }
 
 const SignIn = (): ReactElement => {
-    const { login } = useAuth();
+    const { login, loginError, loginIsError, loginReset } = useAuth();
 
     const { control, handleSubmit, formState: { errors }} = useForm<FormValues>({
         defaultValues: { 
@@ -27,6 +27,16 @@ const SignIn = (): ReactElement => {
     });
     const [isHidden, setIsHidden] = useState(true);
     const [loginButtonPressed, setLoginButtonPressed] = useState(false);
+
+    useEffect(() => {
+        if(!loginIsError) return;
+
+        const timer = setTimeout(() => {
+            loginReset();
+        }, 4000);
+
+        return () : void => { clearTimeout(timer) };
+    }, [loginIsError, loginReset])
 
     const onSubmit: SubmitHandler<FormValues> = (data) => {
         const object: IAuth = {
@@ -41,6 +51,7 @@ const SignIn = (): ReactElement => {
         <View style={styles.container}>
             <Text fontWeight="bold" fontSize="subheading" style={styles.subheadingText}>Log in to your account</Text>
 
+            {loginIsError && <Text style={{color: "red" }}>{loginError?.message}</Text>}
             <Controller 
                 control={control}
                 name="username"
