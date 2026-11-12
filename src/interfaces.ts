@@ -15,6 +15,7 @@ export interface Idata {
     bbmiMetric: number,
     height: number,
     weight: number,
+    water: number
 };
 
 export interface IAuth {

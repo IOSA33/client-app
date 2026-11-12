@@ -32,3 +32,11 @@ export const IAuthRegisterZod = z.object({
         }
     }
 );
+
+export const IChangeValue = z.object({
+    newValue: z
+        .string()
+        .regex(/^\d*\.?\d+$/, "Value must be a number")
+        .transform(Number)
+        .refine((n) => (n > 0 && n < 500), "Value must be greater than 0"),
+})

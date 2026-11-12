@@ -18,6 +18,7 @@ import AddActivity from "../Activity/AddActivity";
 import SignUp from "../Auth/SignUp";
 import ForgotPassword from "../Auth/ForgotPassword";
 import ProfileSettings from "../Activity/ProfileSettings";
+import OneSetting from "../Activity/OneSetting";
 
 const Main = (): ReactElement => {
     // const result = useQuery({
@@ -82,6 +83,12 @@ const Main = (): ReactElement => {
                     <Route path="/settings" element={
                         <Animated.View key="settings" entering={FadeIn} exiting={FadeOutDown.duration(140)} style={{flex: 1}}>    
                             <ProfileSettings />
+                        </Animated.View>
+                    } />
+
+                    <Route path="/onesetting" element={
+                        <Animated.View key="onesetting" entering={FadeIn} exiting={FadeOutDown.duration(140)} style={{flex: 1}}>    
+                            <OneSetting />
                         </Animated.View>
                     } />
                     

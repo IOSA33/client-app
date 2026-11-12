@@ -68,11 +68,10 @@ const Profile = (): ReactElement => {
                 </View>
 
                 <Text fontWeight="bold">Basic Informatin</Text>
-                <Text>Height: {info[0]?.height} cm</Text>
-                <Text>Weight: {info[0]?.weight} kg</Text>
+                <Text>Height: {info[0]?.height ? info[0].height : 0} cm</Text>
+                <Text>Weight: {info[0]?.weight ? info[0].weight : 0} kg</Text>
                 <Text>BMI: {calculateBmi}</Text>
-                {/* TODO: water notifications */}
-                <Text>Water per day: 1.5L</Text>
+                <Text>Water per day: {info[0]?.water ? info[0].water : 0} L</Text>
 
                 <Text fontWeight="bold">Look Activity</Text>
                 <Text>10101010101001010101010011</Text>
