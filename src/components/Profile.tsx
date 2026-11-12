@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
         borderRadius: theme.borders.borderRadius,
         alignItems: "center",
         justifyContent: "center",
-        padding: 10,
+        padding: 11,
         marginLeft: "auto"
     },
     syncButton: {

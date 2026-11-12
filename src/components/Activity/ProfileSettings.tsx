@@ -33,7 +33,7 @@ const ProfileSettings = (): ReactElement => {
                 </Link>
                 
                 <View>
-                    <Text style={{fontSize: 25, fontWeight: "bold"}}>Settings</Text>
+                    <Text style={{padding: 10,fontSize: 25, fontWeight: "bold"}}>Settings</Text>
                 </View>
             </View>
 
@@ -87,7 +87,9 @@ const styles = StyleSheet.create({
     back: {
         position: "absolute",
         left: 5,
-        padding: 8,
+        padding: 15,
+        width: 80,
+        alignItems: "center",
         borderRadius: theme.borders.borderRadius,
         backgroundColor: "#9aaed9"
     },

@@ -64,17 +64,22 @@ const Main = (): ReactElement => {
  
                     <Route path="/signin" element={
                         <Pressable style={{ flex: 1 }} onPress={() => {if (Platform.OS !== 'web') Keyboard.dismiss();}} accessible={false}>
-                            <SignIn />
+                            <Animated.View key="signin" entering={FadeIn} style={{flex: 1}}>    
+                                <SignIn />
+                            </Animated.View>
                         </Pressable>} />
-
                     <Route path="/signup" element={
                         <Pressable style={{ flex: 1 }} onPress={() => {if (Platform.OS !== 'web') Keyboard.dismiss();}} accessible={false}>
+                            <Animated.View key="signup" entering={FadeIn} style={{flex: 1}}>    
                             <SignUp />
+                            </Animated.View>
                         </Pressable>
                         } />
                     <Route path="/reset" element={
                         <Pressable style={{ flex: 1 }} onPress={() => {if (Platform.OS !== 'web') Keyboard.dismiss();}} accessible={false}>
-                            <ForgotPassword />
+                            <Animated.View key="reset" entering={FadeIn} style={{flex: 1}}>    
+                                <ForgotPassword />
+                            </Animated.View>
                         </Pressable>
                         } />
                     
@@ -85,11 +90,12 @@ const Main = (): ReactElement => {
                             <ProfileSettings />
                         </Animated.View>
                     } />
-
                     <Route path="/onesetting" element={
-                        <Animated.View key="onesetting" entering={FadeIn} exiting={FadeOutDown.duration(140)} style={{flex: 1}}>    
-                            <OneSetting />
-                        </Animated.View>
+                        <Pressable style={{ flex: 1 }} onPress={() => {if (Platform.OS !== 'web') Keyboard.dismiss();}} accessible={false}>
+                            <Animated.View key="onesetting" entering={FadeIn} exiting={FadeOutDown.duration(140)} style={{flex: 1}}>    
+                                <OneSetting />
+                            </Animated.View>
+                        </Pressable>
                     } />
                     
                     {/* TODO: FEEDBACK page */}
